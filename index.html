@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <!--Header and Menu Section-->
+    <!--===================Header and Menu Section===================-->
     <header class="container">
         <nav>
             <ul>
@@ -28,7 +28,7 @@
         </nav>
     </header>
 
-    <!--Booking Section-->
+    <!--====================Booking Section====================-->
     <main class="main-content container">
         <div class="booking-form" id="booking_info">
             <h3>Booking Flights</h3>
@@ -108,69 +108,15 @@
                 veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise
                 voluptatibus quam</p>
         </div>
+
         <div id="booking_success">
-            <h2>Your ticket booking has been completed successfully!</h2>
+            <h1>Your ticket booking has been completed successfully!</h1>
+            <h2>Thank you for booking ticket!</h2>
         </div>
     </main>
     <!--=====================Thank You=====================-->
     <script>
-        // document.getElementById('ticket_increase').addEventListener('click', function(){
-        //     const ticketInput = document.getElementById('first_class_ticket_number');
-        //     const ticketNumber = parseInt(ticketInput.value);
-        //     const ticketNewNumber = ticketNumber + 1;
-        //     ticketInput.value = ticketNewNumber;
-        //     const ticketTotal = ticketNewNumber * 150;
-        //     document.getElementById('first_class_ticket_total').innerText = ticketTotal;
-        // });
-        // document.getElementById('ticket_decrease').addEventListener('click', function(){
-        //     const ticketInput = document.getElementById('economy_ticket_number');
-        //     const ticketNumber = parseInt(ticketInput.value);
-        //     const ticketNewNumber = ticketNumber - 1;
-        //     ticketInput.value = ticketNewNumber;
-        //     const ticketTotal = ticketNewNumber * 150;
-        //     document.getElementById('economy_ticket_total').innerText = ticketTotal;
-        // });
-
-
-        // function ticketNumberChange(isIncrease){
-        //     const ticketInput = document.getElementById('first_class_ticket_number');
-        //     const ticketNumber = parseInt(ticketInput.value);
-        //     let ticketNewNumber = ticketNumber;
-        //     if(isIncrease == true){
-        //         ticketNewNumber = ticketNumber + 1;
-        //     }
-        //     if(isIncrease == false && ticketNumber > 0){
-        //         ticketNewNumber = ticketNumber - 1;
-        //     }
-        //     ticketInput.value = ticketNewNumber;
-        //     const ticketTotal = ticketNewNumber * 150;
-        //     document.getElementById('first_class_ticket_total').innerText = ticketTotal;
-        // }
-
-        // function ticketNumberChange1(isIncrease){
-        //     const ticketInput = document.getElementById('economy_ticket_number');
-        //     const ticketNumber = parseInt(ticketInput.value);
-        //     let ticketNewNumber = ticketNumber;
-        //     if(isIncrease == true){
-        //         ticketNewNumber = ticketNumber + 1;
-        //     }
-        //     if(isIncrease == false && ticketNumber > 0){
-        //         ticketNewNumber = ticketNumber - 1;
-        //     }
-        //     ticketInput.value = ticketNewNumber;
-        //     const ticketTotal = ticketNewNumber * 100;
-        //     document.getElementById('economy_ticket_total').innerText = ticketTotal;
-        // }
-
-        
-        // document.getElementById('ticket_increase1').addEventListener('click', function(){
-        //     ticketNumberChange1(true);
-        // });
-        // document.getElementById('ticket_decrease2').addEventListener('click', function(){
-            
-        // });
-
-
+        // Ticket input value 
         function ticketNumberChange(booking, isIncrease){
             const ticketNumber = ticketInputValue(booking);
             let ticketNewNumber = ticketNumber;
@@ -181,43 +127,35 @@
                 ticketNewNumber = ticketNumber - 1;
             }
             document.getElementById(booking + '_ticket_number').value = ticketNewNumber;
-            // const ticketTotal = ticketNewNumber * 150;
-            // let ticketTotal = 0;
-            // if(booking == 'first_class'){
-            //     ticketTotal = ticketNewNumber * 150;
-            // }
-            // if(booking == 'economy'){
-            //     ticketTotal = ticketNewNumber * 100;
-            // }
-            // document.getElementById(booking + '_ticket_total').innerText = ticketTotal;
-
             calculateTotal();
-
         }
-        function calculateTotal(){
-            // const ticketInput = document.getElementById('first_class_ticket_number');
-            // const ticketNumber = parseInt(ticketInput.value);
 
-            // const ticketInput1 = document.getElementById('economy_ticket_number');
-            // const ticketNumber1 = parseInt(ticketInput1.value) ;
+
+        // total amount calculate
+        function calculateTotal(){
             const firstClassTicketNumber = ticketInputValue('first_class');
             const economyTicketNumber = ticketInputValue('economy');
 
             const subTotal = firstClassTicketNumber * 150 + economyTicketNumber * 100;
             document.getElementById('sub_total').innerText = subTotal;
 
-            const taxAmount = subTotal * 0.1; // Percent ber korar niom hosse total k joto percent chaise seita dia vag or 10/100 er value multiply
+            const taxAmount = Math.round(subTotal * 0.1); 
             document.getElementById('tax_amount').innerText = taxAmount;
 
             const totalAmount = subTotal + taxAmount;
             document.getElementById('total_amount').innerText = totalAmount;
         }
+
+
+        // Ticket number Function
         function ticketInputValue(booking){
             const ticketInput = document.getElementById(booking + '_ticket_number');
             const ticketNumber = parseInt(ticketInput.value);
             return ticketNumber;
         }
 
+
+        // Booking Now Button click handler
         const bookingNow = document.getElementById('booking_now').addEventListener('click', function(){
             const bookingInfo = document.getElementById('booking_info');
             bookingInfo.style.display = "none";
