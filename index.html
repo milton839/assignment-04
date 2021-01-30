@@ -56,8 +56,10 @@
                     <input id="first_class_ticket_number" class="inp-style inp-width" type="number" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button onclick="ticketNumberChange('first_class', false);" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                    <button onclick="ticketNumberChange('first_class', true);" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                    <button onclick="ticketNumberChange('first_class', false);" class="btn btn-default"><i
+                            class="fas fa-minus"></i></button>
+                    <button onclick="ticketNumberChange('first_class', true);" class="btn btn-default"><i
+                            class="fas fa-plus"></i></button>
                 </div>
             </div>
 
@@ -67,8 +69,10 @@
                     <input id="economy_ticket_number" class="inp-style inp-width" type="number" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button onclick="ticketNumberChange('economy', false);" class="btn btn-default"><i class="fas fa-minus text-primary"></i></button>
-                    <button onclick="ticketNumberChange('economy', true);" class="btn btn-default"><i class="fas fa-plus text-primary"></i></button>
+                    <button onclick="ticketNumberChange('economy', false);" class="btn btn-default"><i
+                            class="fas fa-minus text-primary"></i></button>
+                    <button onclick="ticketNumberChange('economy', true);" class="btn btn-default"><i
+                            class="fas fa-plus text-primary"></i></button>
                 </div>
             </div>
             <div class="calculations">
@@ -117,13 +121,13 @@
     <!--=====================Thank You=====================-->
     <script>
         // Ticket input value 
-        function ticketNumberChange(booking, isIncrease){
+        function ticketNumberChange(booking, isIncrease) {
             const ticketNumber = ticketInputValue(booking);
             let ticketNewNumber = ticketNumber;
-            if(isIncrease == true){
+            if (isIncrease == true) {
                 ticketNewNumber = ticketNumber + 1;
             }
-            if(isIncrease == false && ticketNewNumber > 0){
+            if (isIncrease == false && ticketNewNumber > 0) {
                 ticketNewNumber = ticketNumber - 1;
             }
             document.getElementById(booking + '_ticket_number').value = ticketNewNumber;
@@ -132,14 +136,14 @@
 
 
         // total amount calculate
-        function calculateTotal(){
+        function calculateTotal() {
             const firstClassTicketNumber = ticketInputValue('first_class');
             const economyTicketNumber = ticketInputValue('economy');
 
             const subTotal = firstClassTicketNumber * 150 + economyTicketNumber * 100;
             document.getElementById('sub_total').innerText = subTotal;
 
-            const taxAmount = Math.round(subTotal * 0.1); 
+            const taxAmount = Math.round(subTotal * 0.1);
             document.getElementById('tax_amount').innerText = taxAmount;
 
             const totalAmount = subTotal + taxAmount;
@@ -148,7 +152,7 @@
 
 
         // Ticket number Function
-        function ticketInputValue(booking){
+        function ticketInputValue(booking) {
             const ticketInput = document.getElementById(booking + '_ticket_number');
             const ticketNumber = parseInt(ticketInput.value);
             return ticketNumber;
@@ -156,15 +160,13 @@
 
 
         // Booking Now Button click handler
-        const bookingNow = document.getElementById('booking_now').addEventListener('click', function(){
+        const bookingNow = document.getElementById('booking_now').addEventListener('click', function () {
             const bookingInfo = document.getElementById('booking_info');
             bookingInfo.style.display = "none";
 
             const bookingSuccess = document.getElementById('booking_success');
             bookingSuccess.style.display = "block";
         });
-
-
     </script>
 </body>
 
