@@ -30,7 +30,7 @@
 
     <!--Booking Section-->
     <main class="main-content container">
-        <div class="booking-form">
+        <div class="booking-form" id="booking_info">
             <h3>Booking Flights</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
@@ -99,7 +99,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="booking_now" class="btn-style">Book Now</button>
         </div>
 
         <div class="booking-content">
@@ -107,6 +107,9 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias
                 veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise
                 voluptatibus quam</p>
+        </div>
+        <div id="booking_success">
+            <h2>Your ticket booking has been completed successfully!</h2>
         </div>
     </main>
     <!--=====================Thank You=====================-->
@@ -179,14 +182,14 @@
             }
             document.getElementById(booking + '_ticket_number').value = ticketNewNumber;
             // const ticketTotal = ticketNewNumber * 150;
-            let ticketTotal = 0;
-            if(booking == 'first_class'){
-                ticketTotal = ticketNewNumber * 150;
-            }
-            if(booking == 'economy'){
-                ticketTotal = ticketNewNumber * 100;
-            }
-            document.getElementById(booking + '_ticket_total').innerText = ticketTotal;
+            // let ticketTotal = 0;
+            // if(booking == 'first_class'){
+            //     ticketTotal = ticketNewNumber * 150;
+            // }
+            // if(booking == 'economy'){
+            //     ticketTotal = ticketNewNumber * 100;
+            // }
+            // document.getElementById(booking + '_ticket_total').innerText = ticketTotal;
 
             calculateTotal();
 
@@ -214,6 +217,14 @@
             const ticketNumber = parseInt(ticketInput.value);
             return ticketNumber;
         }
+
+        const bookingNow = document.getElementById('booking_now').addEventListener('click', function(){
+            const bookingInfo = document.getElementById('booking_info');
+            bookingInfo.style.display = "none";
+
+            const bookingSuccess = document.getElementById('booking_success');
+            bookingSuccess.style.display = "block";
+        });
     </script>
 </body>
 
